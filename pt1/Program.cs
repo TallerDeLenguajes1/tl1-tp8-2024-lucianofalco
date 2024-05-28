@@ -23,8 +23,9 @@ for (int i = 0; i < cantidadTareas; i++)
     tareasPendientes.Add(tarea);
 }
 
-foreach (var t in tareasPendientes)
+for (int i = tareasPendientes.Count - 1; i >= 0; i--)
 {
+    var t = tareasPendientes[i];
     Console.WriteLine($"¿La tarea '{t.Descripcion}' esta terminada ?");
     Console.WriteLine("Marque");
     Console.WriteLine("1_ Si");
@@ -35,10 +36,8 @@ foreach (var t in tareasPendientes)
     }
     if (opcion == 1)
     {
-        Tarea tareaRealizada = new Tarea();
-        tareaRealizada = t;
-        tareasTerminadas.Add(tareaRealizada);
-        //tareasPendientes.Remove();
+        tareasTerminadas.Add(t);
+        tareasPendientes.RemoveAt(i);
     }
 }
 
